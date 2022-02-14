@@ -115,3 +115,11 @@ export function param2Obj(url) {
   })
   return obj
 }
+
+export function jsonToFormData(data) {
+  const formData = new FormData();
+  Object.keys(data).forEach((key) => {
+    formData.append(key, data[key])
+  })
+  return formData;
+}

@@ -46,116 +46,77 @@ export const constantRoutes = [
   {
     path: '/',
     component: Layout,
-    redirect: '/dashboard',
+    redirect: '/system-state',
     children: [{
-      path: 'dashboard',
-      name: 'Dashboard',
-      component: () => import('@/views/dashboard/index'),
-      meta: { title: 'Dashboard', icon: 'dashboard' }
+      path: 'system-state',
+      name: 'SystemState',
+      component: () => import('@/views/system-state/index'),
+      meta: { title: '系统状态', icon: 'dashboard' }
     }]
   },
 
   {
-    path: '/example',
+    path: '/parameter',
     component: Layout,
-    redirect: '/example/table',
-    name: 'Example',
-    meta: { title: 'Example', icon: 'el-icon-s-help' },
+    redirect: '/parameter/config',
+    name: 'Parameter',
+    meta: { title: '小区参数配置', icon: 'el-icon-s-help' },
     children: [
       {
-        path: 'table',
-        name: 'Table',
-        component: () => import('@/views/table/index'),
-        meta: { title: 'Table', icon: 'table' }
+        path: 'config',
+        name: 'Config',
+        component: () => import('@/views/parameter/config'),
+        meta: { title: '参数配置', icon: 'table' }
       },
       {
-        path: 'tree',
-        name: 'Tree',
-        component: () => import('@/views/tree/index'),
-        meta: { title: 'Tree', icon: 'tree' }
+        path: 'power',
+        name: 'Power',
+        component: () => import('@/views/parameter/power'),
+        meta: { title: '功放状态', icon: 'tree' }
       }
     ]
   },
 
   {
-    path: '/form',
+    path: '/code',
     component: Layout,
     children: [
       {
         path: 'index',
-        name: 'Form',
-        component: () => import('@/views/form/index'),
-        meta: { title: 'Form', icon: 'form' }
+        name: 'Code',
+        component: () => import('@/views/code/index'),
+        meta: { title: '侦码数据', icon: 'form' }
       }
     ]
   },
 
   {
-    path: '/nested',
+    path: '/system',
     component: Layout,
-    redirect: '/nested/menu1',
-    name: 'Nested',
+    redirect: '/system/upload',
+    name: 'System',
     meta: {
-      title: 'Nested',
+      title: '系统配置',
       icon: 'nested'
     },
     children: [
       {
-        path: 'menu1',
-        component: () => import('@/views/nested/menu1/index'), // Parent router-view
-        name: 'Menu1',
-        meta: { title: 'Menu1' },
-        children: [
-          {
-            path: 'menu1-1',
-            component: () => import('@/views/nested/menu1/menu1-1'),
-            name: 'Menu1-1',
-            meta: { title: 'Menu1-1' }
-          },
-          {
-            path: 'menu1-2',
-            component: () => import('@/views/nested/menu1/menu1-2'),
-            name: 'Menu1-2',
-            meta: { title: 'Menu1-2' },
-            children: [
-              {
-                path: 'menu1-2-1',
-                component: () => import('@/views/nested/menu1/menu1-2/menu1-2-1'),
-                name: 'Menu1-2-1',
-                meta: { title: 'Menu1-2-1' }
-              },
-              {
-                path: 'menu1-2-2',
-                component: () => import('@/views/nested/menu1/menu1-2/menu1-2-2'),
-                name: 'Menu1-2-2',
-                meta: { title: 'Menu1-2-2' }
-              }
-            ]
-          },
-          {
-            path: 'menu1-3',
-            component: () => import('@/views/nested/menu1/menu1-3'),
-            name: 'Menu1-3',
-            meta: { title: 'Menu1-3' }
-          }
-        ]
+        path: 'upload',
+        component: () => import('@/views/system/upload'), // Parent router-view
+        name: 'Upload',
+        meta: { title: '系统升级' }
       },
       {
-        path: 'menu2',
-        component: () => import('@/views/nested/menu2/index'),
-        name: 'Menu2',
-        meta: { title: 'menu2' }
-      }
-    ]
-  },
-
-  {
-    path: 'external-link',
-    component: Layout,
-    children: [
+        path: 'password',
+        component: () => import('@/views/system/password'),
+        name: 'Password',
+        meta: { title: '修改密码' }
+      },
       {
-        path: 'https://panjiachen.github.io/vue-element-admin-site/#/',
-        meta: { title: 'External Link', icon: 'link' }
+        path: 'log',
+        component: () => import('@/views/system/log'),
+        name: 'Log',
+        meta: { title: '系统日志' }
       }
     ]
   },

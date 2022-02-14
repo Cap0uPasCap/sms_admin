@@ -1,12 +1,14 @@
 import request from '@/utils/request'
+import { jsonToFormData } from '@/utils'
 
 export function login(data) {
   return request({
-    url: '/vue-admin-template/user/login',
+    url: '/cgi-bin/login.cgi',
     method: 'post',
-    data
+    data: jsonToFormData(data)
   })
 }
+
 
 export function getInfo(token) {
   return request({
