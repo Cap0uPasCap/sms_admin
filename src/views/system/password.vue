@@ -1,48 +1,44 @@
 <template>
   <div class="app-container">
     <el-form ref="form" :model="form" label-width="120px">
-      <el-form-item label="用户名: ">
-        <el-input v-model="form.name" />
-      </el-form-item>
       <el-form-item label="密码: ">
-        <el-input v-model="form.name" />
+        <el-input v-model="form.change_password" />
       </el-form-item>
-      <el-form-item label="确认密码: ">
-        <el-input v-model="form.name" />
+      <el-form-item label="确认密码: " validate-status="">
+        <el-input v-model="form.change_password_confirm" />
       </el-form-item>
       <el-form-item>
         <el-button type="primary" @click="onSubmit">Submit</el-button>
-        <el-button @click="onCancel">Cancel</el-button>
       </el-form-item>
     </el-form>
   </div>
 </template>
 
 <script>
+import { editPass } from '@/api/user'
+
 export default {
   data() {
     return {
       form: {
-        name: '',
-        region: '',
-        date1: '',
-        date2: '',
-        delivery: false,
-        type: [],
-        resource: '',
-        desc: ''
+        change_password: '',
+        change_password_confirm: ''
       }
     }
   },
   methods: {
     onSubmit() {
-      this.$message('submit!')
-    },
-    onCancel() {
-      this.$message({
-        message: 'cancel!',
-        type: 'warning'
-      })
+      if (this.form.change_password !== this.form.change_password_confirm) {
+        this.$message.error('密码不一致')
+      } else {
+        editPass({ change_password: this.form.change_password }).then(response => {
+          const { msg } = response
+          this.$message({
+            type: 'success',
+            message: msg
+          })
+        })
+      }
     }
   }
 }

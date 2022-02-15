@@ -1,14 +1,21 @@
 import request from '@/utils/request'
-import { jsonToFormData } from '@/utils'
+import { addTokenToFormData } from '@/utils'
 
 export function login(data) {
   return request({
-    url: '/cgi-bin/login.cgi',
+    url: '/cgi-bin/bin/login.cgi',
     method: 'post',
-    data: jsonToFormData(data)
+    data: addTokenToFormData(data)
   })
 }
 
+export function editPass(data) {
+  return request({
+    url: '/cgi-bin/bin/edituser.cgi',
+    method: 'post',
+    data: addTokenToFormData(data)
+  })
+}
 
 export function getInfo(token) {
   return request({
