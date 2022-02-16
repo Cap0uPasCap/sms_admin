@@ -1,6 +1,7 @@
 import axios from 'axios'
 import { Message } from 'element-ui'
-import store from '@/store'
+import { removeToken } from '@/utils/auth'
+import { resetRouter } from '@/router'
 
 // create an axios instance
 const service = axios.create({
@@ -48,6 +49,7 @@ service.interceptors.response.use(
     * status === '2'  token失效，跳转登录页面
     * */
     const data = response.data
+    console.log('🚀data👉👉', data)
     const { status, msg } = data
     if (status === '1') {
       Message({
@@ -57,13 +59,20 @@ service.interceptors.response.use(
       })
       return Promise.reject(new Error(msg || 'Error'))
     } else if (status === '2') {
-      store.dispatch('user/logout').then(() => {
-        Message({
-          message: msg || 'Error',
-          type: 'error',
-          duration: 3 * 1000
-        })
+      removeToken() // must remove  token  first
+      resetRouter()
+      Message({
+        message: msg || 'Error',
+        type: 'error',
+        duration: 3 * 1000
       })
+      // store.dispatch('user/logout').then(() => {
+      //   Message({
+      //     message: msg || 'Error',
+      //     type: 'error',
+      //     duration: 3 * 1000
+      //   })
+      // })
       return Promise.reject(new Error(msg || 'Error'))
     } else if (status === '0') {
       return response.data

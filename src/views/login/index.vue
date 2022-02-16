@@ -48,8 +48,6 @@
 
 <script>
 import { validUsername } from '@/utils/validate'
-import request from '@/utils/request'
-import { jsonToFormData } from '@/utils'
 export default {
   name: 'Login',
   data() {
@@ -70,7 +68,7 @@ export default {
     return {
       loginForm: {
         username: 'admin',
-        password: 'admin'
+        password: '123456'
       },
       loginRules: {
         username: [{ required: true, trigger: 'blur', validator: validateUsername }],
@@ -105,6 +103,10 @@ export default {
         if (valid) {
           this.loading = true
           this.$store.dispatch('user/login', this.loginForm).then(() => {
+            this.$message({
+              type: 'success',
+              message: '登录成功'
+            })
             this.$router.push({ path: this.redirect || '/' })
             this.loading = false
           }).catch(() => {
