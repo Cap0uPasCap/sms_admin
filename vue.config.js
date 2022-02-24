@@ -38,7 +38,7 @@ module.exports = {
     },
     proxy: {
       '/api': {
-        target: 'http://192.168.0.244:8080',
+        target: 'http://192.168.0.244:8000',
         ws: false,
         changeOrigin: true,
         pathRewrite: {

@@ -2,8 +2,6 @@
  * Created by PanJiaChen on 16/11/18.
  */
 
-import { getToken } from '@/utils/auth'
-
 /**
  * Parse the time to string
  * @param {(Object|string|number)} time
@@ -116,20 +114,5 @@ export function param2Obj(url) {
     }
   })
   return obj
-}
-/*
-* 将data添加 token字段
-* 将JSON数据转成formData格式
-* */
-export function addTokenToFormData(data) {
-  const dataAndToken = {
-    ...data,
-    ...(getToken() && { token: getToken() })
-  }
-  const formData = new FormData()
-  Object.keys(dataAndToken).forEach((key) => {
-    formData.append(key, dataAndToken[key])
-  })
-  return formData
 }
 

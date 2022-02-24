@@ -1,6 +1,7 @@
 import axios from 'axios'
 import { Message } from 'element-ui'
-import { removeToken } from '@/utils/auth'
+import store from '@/store'
+import { removeToken, getToken } from '@/utils/auth'
 import { resetRouter } from '@/router'
 
 // create an axios instance
@@ -14,12 +15,12 @@ const service = axios.create({
 service.interceptors.request.use(
   config => {
     // do something before request is sent
-    // if (store.getters.token) {
-    //   // let each request carry token
-    //   // ['X-Token'] is a custom headers key
-    //   // please modify it according to the actual situation
-    //   config.headers['token'] = getToken()
-    // }
+    if (store.getters.token) {
+      // let each request carry token
+      // ['X-Token'] is a custom headers key
+      // please modify it according to the actual situation
+      config.headers['Token'] = getToken()
+    }
     return config
   },
   error => {
@@ -51,14 +52,14 @@ service.interceptors.response.use(
     const data = response.data
     console.log('🚀data👉👉', data)
     const { status, msg } = data
-    if (status === '1') {
+    if (status === 1) {
       Message({
         message: msg || 'Error',
         type: 'error',
         duration: 3 * 1000
       })
       return Promise.reject(new Error(msg || 'Error'))
-    } else if (status === '2') {
+    } else if (status === 2) {
       removeToken() // must remove  token  first
       resetRouter()
       Message({
@@ -74,7 +75,7 @@ service.interceptors.response.use(
       //   })
       // })
       return Promise.reject(new Error(msg || 'Error'))
-    } else if (status === '0') {
+    } else if (status === 0) {
       return response.data
     }
   },
