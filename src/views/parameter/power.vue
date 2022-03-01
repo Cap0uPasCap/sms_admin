@@ -12,22 +12,22 @@
       <el-row>
         <el-col :span="8">
           <el-form-item label="频率">
-            <el-input v-model="form.paSWR" />
+            <el-input v-model="form.paSWR" readonly />
           </el-form-item>
         </el-col>
         <el-col :span="8">
           <el-form-item label="增益">
-            <el-input v-model="form.paGain" />
+            <el-input v-model="form.paGain" readonly />
           </el-form-item>
         </el-col>
         <el-col :span="8">
           <el-form-item label="温度">
-            <el-input v-model="form.temp" />
+            <el-input v-model="form.temp" readonly />
           </el-form-item>
         </el-col>
       </el-row>
       <el-form-item label="驻波比">
-        <el-input v-model="form.paPower" style="width: 40%;" />
+        <el-input v-model="form.paPower" readonly style="width: 40%;" />
       </el-form-item>
     </el-form>
   </div>
