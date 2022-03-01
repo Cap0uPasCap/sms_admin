@@ -20,9 +20,10 @@ export function getPowerInfo() {
     method: 'post'
   })
 }
+
 export function setPowerInfo(data) {
   return request({
-    url: '/editPower',
+    url: '/powerOpen',
     method: 'post',
     data
   })

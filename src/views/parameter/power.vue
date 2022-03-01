@@ -6,6 +6,7 @@
           v-model="form.paStatus"
           :active-value="1"
           :inactive-value="0"
+          @change="onSubmit"
         />
       </el-form-item>
       <el-row>
@@ -27,9 +28,6 @@
       </el-row>
       <el-form-item label="驻波比">
         <el-input v-model="form.paPower" style="width: 40%;" />
-      </el-form-item>
-      <el-form-item>
-        <el-button type="primary" @click="onSubmit">Submit</el-button>
       </el-form-item>
     </el-form>
   </div>
@@ -60,12 +58,15 @@ export default {
       })
     },
     onSubmit() {
-      setPowerInfo(this.form).then(res => {
+      setPowerInfo({
+        baseBandId: this.form.baseBandId,
+        paStatus: this.form.paStatus
+      }).then(res => {
         this.$message({
           type: 'success',
           message: res?.msg
         })
-        this.getPowerInfo()
+        // this.getData()
       })
     }
   }
