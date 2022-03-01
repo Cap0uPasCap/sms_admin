@@ -21,6 +21,7 @@ service.interceptors.request.use(
       // ['X-Token'] is a custom headers key
       // please modify it according to the actual situation
       config.headers['Token'] = getToken()
+      config.headers['Access-Control-Max-Age'] = '3600'
     }
     return config
   },

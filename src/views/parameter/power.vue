@@ -34,7 +34,7 @@
 </template>
 
 <script>
-import { getPowerInfo, setPowerInfo } from '@/api/parameter';
+import { getPowerInfo, setPowerInfo } from '@/api/parameter'
 export default {
   data() {
     return {
