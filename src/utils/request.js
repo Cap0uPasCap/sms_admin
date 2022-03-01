@@ -3,6 +3,7 @@ import { Message } from 'element-ui'
 import store from '@/store'
 import { removeToken, getToken } from '@/utils/auth'
 import { resetRouter } from '@/router'
+console.log('🚀process.env👉👉', process.env.NODE_ENV)
 
 // create an axios instance
 const service = axios.create({
