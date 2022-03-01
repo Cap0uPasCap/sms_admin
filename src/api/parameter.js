@@ -14,3 +14,16 @@ export function cellUpdate(data) {
     data
   })
 }
+export function getPowerInfo() {
+  return request({
+    url: '/power',
+    method: 'post'
+  })
+}
+export function setPowerInfo(data) {
+  return request({
+    url: '/editPower',
+    method: 'post',
+    data
+  })
+}
