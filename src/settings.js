@@ -1,6 +1,6 @@
 module.exports = {
 
-  title: 'Vue Admin Template',
+  title: '5G电子围栏管理系统',
 
   /**
    * @type {boolean} true | false
