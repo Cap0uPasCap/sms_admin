@@ -21,7 +21,7 @@
         </el-col>
         <el-col :span="8">
           <el-form-item label="温度">
-            <el-input v-model="form.baseBandId" />
+            <el-input v-model="form.temp" />
           </el-form-item>
         </el-col>
       </el-row>
@@ -45,6 +45,7 @@ export default {
         paSWR: '',
         paGain: '',
         baseBandId: '',
+        temp: '',
         paPower: ''
       }
     }
