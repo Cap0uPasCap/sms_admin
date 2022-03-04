@@ -67,28 +67,28 @@ export const constantRoutes = [
         name: 'Config',
         component: () => import('@/views/parameter/config'),
         meta: { title: '参数配置', icon: 'table' }
-      },
-      {
-        path: 'power',
-        name: 'Power',
-        component: () => import('@/views/parameter/power'),
-        meta: { title: '功放状态', icon: 'tree' }
       }
+      // {
+      //   path: 'power',
+      //   name: 'Power',
+      //   component: () => import('@/views/parameter/power'),
+      //   meta: { title: '功放状态', icon: 'tree' }
+      // }
     ]
   },
 
-  {
-    path: '/code',
-    component: Layout,
-    children: [
-      {
-        path: 'index',
-        name: 'Code',
-        component: () => import('@/views/code/index'),
-        meta: { title: '侦码数据', icon: 'form' }
-      }
-    ]
-  },
+  // {
+  //   path: '/code',
+  //   component: Layout,
+  //   children: [
+  //     {
+  //       path: 'index',
+  //       name: 'Code',
+  //       component: () => import('@/views/code/index'),
+  //       meta: { title: '侦码数据', icon: 'form' }
+  //     }
+  //   ]
+  // },
 
   {
     path: '/system',
@@ -100,24 +100,24 @@ export const constantRoutes = [
       icon: 'nested'
     },
     children: [
-      {
-        path: 'upload',
-        component: () => import('@/views/system/upload'), // Parent router-view
-        name: 'Upload',
-        meta: { title: '系统升级' }
-      },
+      // {
+      //   path: 'upload',
+      //   component: () => import('@/views/system/upload'), // Parent router-view
+      //   name: 'Upload',
+      //   meta: { title: '系统升级' }
+      // },
       {
         path: 'password',
         component: () => import('@/views/system/password'),
         name: 'Password',
         meta: { title: '修改密码' }
-      },
-      {
-        path: 'log',
-        component: () => import('@/views/system/log'),
-        name: 'Log',
-        meta: { title: '系统日志' }
       }
+      // {
+      //   path: 'log',
+      //   component: () => import('@/views/system/log'),
+      //   name: 'Log',
+      //   meta: { title: '系统日志' }
+      // }
     ]
   },
 
